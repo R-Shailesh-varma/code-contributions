@@ -1,0 +1,27 @@
+class Solution {
+public:
+    void stacker(string s, stack<char>& st){
+        for(int i = 0; i < s.size(); i++){
+            if(s[i] == '*' && !st.empty()){
+                st.pop();
+            }else if(s[i] == '*'){
+                continue;
+            }else{
+                st.push(s[i]);
+            }
+        }
+    }
+    string removeStars(string s) {
+        stack<char> s1, s2;
+        stacker(s, s1);
+        string ans = "";
+        while(!s1.empty()){
+            s2.push(s1.top());
+            s1.pop();
+        }while(!s2.empty()){
+            ans += s2.top();
+            s2.pop();
+        }
+        return ans;
+    }
+};
