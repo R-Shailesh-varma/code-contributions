@@ -1,0 +1,41 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        int n = word.length();
+        char first = word[0];
+
+        if (n == 1)
+            return true;
+
+        if (first >= 'A' && first <= 'Z') 
+        {
+            if (word[1] >= 'A' && word[1] <= 'Z') 
+            {
+                for (int i = 2; i < n; i++) 
+                {
+                    if (word[i] < 'A' || word[i] > 'Z')
+                        return false;
+                }
+            } 
+            else 
+            {
+                for (int i = 2; i < n; i++) 
+                {
+                    if (word[i] < 'a' || word[i] > 'z')
+                        return false;
+                }
+            }
+        }
+
+        else 
+        {
+            for (int i = 1; i < n; i++) 
+            {
+                if (word[i] < 'a' || word[i] > 'z')
+                    return false;
+            }
+        }
+
+        return true;
+    }
+};
